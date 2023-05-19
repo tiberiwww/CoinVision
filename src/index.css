@@ -1,13 +1,95 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
+:root {
+  @apply bg-primary text-primary;
+  font-family: "Noto Sans", sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.rounded-div {
+  @apply border border-border rounded-2xl shadow-xl bg-secondary px-2 max-w-[1140px] w-full mx-auto;
+}
+
+.arrow-sort {
+  display: none;
+}
+
+.table-header-text:hover .arrow-sort {
+  display: inline-block;
+}
+
+.dark {
+  --color-bg-primary: #2d3748;
+  --color-bg-border: #252d3b;
+  --color-bg-secondary: #2a3444;
+  --color-text-primary: #dbdbdb;
+  --color-text-secondary: #f0e2e2;
+  --color-text-accent: #81e6d9;
+  --color-bg-input: #4a5361;
+  --color-bg-button: #81e6d9;
+  --color-bg-tablerow: rgb(55 65 81);
+  --color-border-row: #414553;
+}
+
+.light {
+  --color-bg-primary: #f9f9f9;
+  --color-bg-secondary: #ffffff;
+  --color-bg-border: #ececec;
+  --color-text-primary: #2d3748;
+  --color-text-secondary: #4a5568;
+  --color-text-accent: #2b6cb0;
+  --color-bg-input: #edf2f7;
+  --color-bg-button: #2b6cb0;
+  --color-bg-tablerow: rgb(247, 247, 249);
+  --color-border-row: #e3e3e3;
+}
+
+.text-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide {
+  display: flex;
+  align-items: center;
+  /* padding: 0 30px 0 30px; */
+  animation: slideshow 30s linear infinite;
+}
+
+
+@keyframes slideshow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.slider::before, .slider::after {
+  height: 10rem;
+  width: 2rem;
+  position: absolute;
+  content: "";
+  background: linear-gradient(to right, var(--color-bg-primary) 0%, rgba(255,255,255,0) 100%);
+  z-index: 2;
+}
+.slider::before {
+  left: 0;
+  top: 0;
+}
+.slider::after {
+  right:0;
+  top:0;
+  transform: rotateZ(180deg);
 }
